@@ -1,26 +1,28 @@
 import java.util.List;
+import java.util.NoSuchElementException;
 
-public class OrderRepo {
 
-    import java.util.List;
+
+
 
     public class OrderRepo {
         private List<Order> orders;
 
-        public OrderRepo() {
-        }
-
-        public Order getOrderById (int OrderId, List<Order> orders){
-            for (Order : orders ){
-                if (OrderId == ) {
-                    return orders.get(OrderId);
-                }
-            }
-        }
-
         public OrderRepo(List<Order> orders) {
             this.orders = orders;
         }
+
+
+        public Order getOrderById  (int OrderId){
+            for (Order o: orders){
+                if (OrderId == o.getOrderId()) {
+                    return o;
+                }
+            }
+            throw new NoSuchElementException();
+        }
+
+
 
         public List<Order> getOrders() {
             return orders;
@@ -31,4 +33,4 @@ public class OrderRepo {
         }
     }
 
-}
+
