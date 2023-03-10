@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Objects;
 
 public class ProductRepo {
@@ -8,24 +9,16 @@ public class ProductRepo {
     public ProductRepo() {    //leerer Konstruktor
     }
 
-    public ProductRepo(List<Product> ourProducts) { //Konstruktor
-        this.products = ourProducts;
+    public ProductRepo(List<Product> products) { //Konstruktor
+        this.products = products;
     }
-/*
 
-    public Product getProduct (ProductRepo myRepo, int index) {
-        for (int i : myRepo){
-
-        }
-    }
-*/
-
-    public List<Product> getOurProducts() {
+    public List<Product> getProducts() {
         return products;
     }
 
-    public void setOurProducts(List<Product> ourProducts) {
-        this.products = ourProducts;
+    public void setProducts(List<Product> products) {
+        this.products = products;
     }
 
     @Override
@@ -47,4 +40,21 @@ public class ProductRepo {
                 "products=" + products +
                 '}';
     }
+
+    public Product getProductbyId (int id) {
+        for (Product p : products){
+            if (id == p.getId()){
+                return p;
+            }
+        }
+        throw new NoSuchElementException("Produkt existiert nicht");
+    }
+
+    public List <Product> listProducts (){
+        for (Product p : products){
+            System.out.println(p);
+        }
+        return products;
+    }
+
 }
